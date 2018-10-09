@@ -1,3 +1,4 @@
+@import url('https://fonts.googleapis.com/css?family=Roboto:300,400,500,700');
 @font-face {
   font-family: "prox";
   font-weight: 400;
@@ -94,7 +95,7 @@ input:-webkit-autofill {
 html,
 body {
   color: #2b2d50;
-  font-family: "prox";
+  font-family: "Roboto";
   font-weight: 300;
   margin: 0;
   padding: 0;
@@ -209,6 +210,7 @@ table td {
   padding: 15px;
 }
 .standard-input {
+  font-weight: 300;
   background: #fff;
   color: #252e32;
   padding: 5px;
@@ -223,7 +225,10 @@ table td {
   line-height: 14pt;
   text-align: left;
 }
-
+.input-row {
+  display: flex;
+  align-items: flex-start;
+}
 .standard-input.icon {
   padding-left: 35px;
 }
@@ -368,6 +373,7 @@ table td {
 }
 
 .vdp-datepicker__calendar {
+  right:0;
   position: absolute;
   top: 37px !important;
   z-index: 100;
@@ -499,4 +505,142 @@ table td {
 .pages li.active {
   color: #5c7c83;
   text-decoration: underline;
+}
+.modal-btn-container {
+  float: right;
+  padding: 15px;
+  display: flex;
+  overflow: auto;
+  padding-right: 0;
+}
+.modal-btn {
+  height:40px;
+  display:flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0px 25px;
+  border-radius: 3px;
+  margin-left: 10px;
+  font-size: 10pt;
+}
+.upload-file-btn {
+  text-align: center;
+  position: relative;
+  margin: 0;
+}
+.hide-me {
+  position: absolute;
+  top: 0;
+  pointer-events: none;
+  opacity: 0;
+}
+.hide-this{
+  opacity: 0;
+}
+
+.modal-btn.cancel {
+  background: #fff;
+  color: #688187;
+  border: solid 1px #d6dfe1;
+}
+
+.modal-btn.cancel:hover {
+  cursor: pointer;
+  background: #f8fafb;
+}
+
+.modal-btn.cancel:active {
+  background: #eaeff2;
+}
+.modal-btn.confirm {
+  background: #3e7cc8;
+  color: #fff;
+}
+.modal-btn.confirm:hover {
+  background: #356caf;
+  cursor: pointer;
+}
+.modal-btn.delete {
+  background: #e35f6b;
+  color: #fff;
+  cursor: pointer;
+}
+
+.modal-btn.delete:hover {
+  background: #d1535e;
+}
+
+.modal-btn.cancel {
+  background: #fff;
+  color: #688187;
+  border: solid 1px #d6dfe1;
+}
+
+.modal-btn.cancel:hover {
+  cursor: pointer;
+  background: #f8fafb;
+}
+
+.modal-btn.cancel:active {
+  background: #eaeff2;
+}
+.overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 100vh;
+  width: 100%;
+  background: rgba(0, 0, 0, 0.3);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+}
+.modal-container {
+  background: rgba(186, 222, 232, 0.69);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  position: fixed;
+  z-index: 10000;
+  width: 100%;
+  top: 0;
+  left: 0;
+}
+.modal-1 {
+  max-width: 500px;
+  border-radius: 3px;
+  overflow: hidden;
+  width: 100%;
+  background: #fff;
+}
+.modal-top {
+  padding: 15px;
+  display: flex;
+  align-items: center;
+  background: #ffffff;
+  border-bottom: solid 1px #eaeaea;
+}
+.modal-close {
+  margin-left: auto;
+}
+.modal-inner {
+  padding: 15px;
+}
+.modal-buttons {
+  padding: 15px;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+}
+.modal-sub-inner {
+  background: #e3e8ee;
+  padding: 15px;
+  margin: 15px 0px;
+}
+
+.modal-sub-inner-title {
+  font-size: 10pt;
+  margin-bottom: 10px;
 }

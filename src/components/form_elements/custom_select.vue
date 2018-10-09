@@ -80,16 +80,18 @@ export default {
   align-items: center;
   padding: 10px;
   position: relative;
-  height: 40px;
-  border: solid 1px #eaeaea;
+  height: 30px;
+  box-shadow: 0px 4px 30px -13px rgba(0, 0, 0, 0.6);
+  border: solid 1px #e2eaec;
   border-radius: 3px;
   background: #fff;
+  margin: 5px 0px;
 }
 .custom-select-container.open {
-  border-color: #66d0f7;
+  border-color: #aab7c4;
 }
 .custom-select-field {
-  font-size: 12pt;
+  font-size: 11pt;
   color: #000;
 }
 .custom-select-container i {
@@ -101,7 +103,7 @@ export default {
 }
 .custom-select-options {
   position: absolute;
-  top: 40px;
+  top: 30px;
   left: 0;
   width: 100%;
   overflow: auto;

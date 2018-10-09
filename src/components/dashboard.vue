@@ -6,14 +6,39 @@
                 <div class="main-container container">
                     <Sidebar activePage="dashboard" />
                     <div class="content-panels animated-med fadeInUp">
-                        <div class="content-panel blue">
+                      <div class="content-panel blue">
+                            
+                            <div class="content-panel-inner">
+                              <div class="metric-container">
+                                <div class="metric-item">
+                                  <div class="metric-title">NOI</div>
+                                  <div class="metric-value good">$565,344</div>
+                                </div>
+                                <div class="metric-item">
+                                  <div class="metric-title">Asset Value</div>
+                                  <div class="metric-value">$1,565,344</div>
+                                </div>
+                                <div class="metric-item">
+                                  <div class="metric-title">Repair and Maintenance &nbsp; <i class="fa fa-exclamation-triangle average"></i></div>
+                                  <div class="metric-value poor">$565,344</div>
+                                </div>
+                              </div>
+                            </div>
+                            
+                        </div>
+                        <div class="content-panel">
                             <div class="content-panel-top">
                                 <div class="top-dropdown" >
                                     <span @click="toggleChartDropdown()">BMS <i class="fa fa-angle-down"></i></span>
-                                    <div v-if="chartDropdown" class="dropdown-panel animated-fast zoomIn2" style="left:0; right:unset">
+                                    <transition
+                                        enter-active-class="zoomIn2"
+                                        leave-active-class="fadeOutDown"
+                                      >
+                                    <div v-if="chartDropdown" class="dropdown-panel animated-fast" style="left:0; right:unset">
                                         <div class="dropdown-option">Option 1</div>
                                         <div class="dropdown-option">Option 2</div>
                                     </div>
+                                    </transition>
                                 </div>
                                 <div class="content-panel-top-options"><i class="fa fa-angle-down"></i></div>
                             </div>
@@ -30,33 +55,11 @@
                             </div>
                             
                         </div>
-                        <div class="content-panel">
-                            <div class="content-panel-top">
-                                <span>Metrics</span>
-                                <div class="content-panel-top-options"><i class="fa fa-angle-down"></i></div>
-                            </div>
-                            <div class="content-panel-inner">
-                              <div class="metric-container">
-                                <div class="metric-item">
-                                  <div class="metric-title">NOI</div>
-                                  <div class="metric-value">$565,344</div>
-                                </div>
-                                <div class="metric-item">
-                                  <div class="metric-title">Asset Value</div>
-                                  <div class="metric-value">$1,565,344</div>
-                                </div>
-                                <div class="metric-item">
-                                  <div class="metric-title">Repair and Maintenance</div>
-                                  <div class="metric-value">$565,344</div>
-                                </div>
-                              </div>
-                            </div>
-                            
-                        </div>
+                        
 
                          <div class="content-panel">
                             <div class="content-panel-top">
-                                <span>Building Health Key Metrics</span>
+                                <span><i class="fa fa-exclamation-triangle" style="color:#e39f48;"></i> Building Health Key Metrics</span>
                                 <div class="content-panel-top-options"><i class="fa fa-angle-down"></i></div>
                             </div>
                             <div class="content-panel-inner">
@@ -79,7 +82,7 @@
                                 </div>
                                 <div @click="toggleHealth(5)" class="health-item" :class="{'active': activeHealth == 5}">
                                   <div v-if="activeHealth == 5" class="active-health-panel animated-fast fadeInUp">
-                                    <i class="fa fa-exclamation-triangle"></i> Your Moisture Level is poor. <div style="margin-left:auto" class="basic-btn danger">Get Help</div>
+                                    <i class="fa fa-exclamation-triangle"></i> &nbsp;Your Moisture Level is poor. <div style="margin-left:auto" class="basic-btn danger">Get Help</div>
                                   </div>
                                   <div class="health-title">Moisture Level</div>
                                   <div class="health-value poor"><i class="fa fa-exclamation-triangle"></i> Poor</div>
@@ -104,7 +107,7 @@
                                 </div>
                                 <div @click="toggleHealth(10)" class="health-item" :class="{'active': activeHealth == 10}">
                                   <div v-if="activeHealth == 10" class="active-health-panel animated-fast fadeInUp">
-                                    <i class="fa fa-exclamation-triangle"></i> Your Ventilation Quality is poor. <div style="margin-left:auto" class="basic-btn danger">Get Help</div>
+                                    <i class="fa fa-exclamation-triangle"></i>&nbsp; Your Ventilation Quality is poor. <div style="margin-left:auto" class="basic-btn danger">Get Help</div>
                                   </div>
                                   <div class="health-title">Ventilation Quality</div>
                                   <div class="health-value poor"><i class="fa fa-exclamation-triangle"></i> Poor</div>
@@ -115,7 +118,7 @@
                             
                         </div>
 
-                        <div class="content-panel green">
+                        <div class="content-panel">
                             <div class="content-panel-top">
                                 <span>Third Party Data Matrix</span>
                                 <div class="content-panel-top-options"><i class="fa fa-angle-down"></i></div>
@@ -175,7 +178,7 @@ export default {
         y: [110, 24],
         type: "bar",
         marker: {
-          color: "#fff"
+          color: ["#2e71b8", "#3297d3"]
         }
       }
     ];
@@ -185,7 +188,7 @@ export default {
         values: [20, 14, 23, 12],
         type: "pie",
         marker: {
-          colors: ["#7cb4fd", "#405e85", "#a9cbf6", "#405eff"]
+          colors: ["#24b47e", "#3297d3", "#e39f48", "#8f6ed5"]
         }
       }
     ];
@@ -195,7 +198,7 @@ export default {
         y: [20, 14, 23],
         type: "bar",
         marker: {
-          color: "#fff"
+          color: ["#2e71b8", "#3297d3", "#6772e5"]
         }
       }
     ];
@@ -205,7 +208,14 @@ export default {
         y: [20, 14, 23, 12, 15, 16],
         type: "bar",
         marker: {
-          color: "#fff"
+          color: [
+            "#2e71b8",
+            "#e39f48",
+            "#24b47e",
+            "#3297d3",
+            "#b76ac4",
+            "#24b47e"
+          ]
         }
       }
     ];
@@ -215,7 +225,14 @@ export default {
         y: [20, 14, 23, 12, 15, 16],
         type: "bar",
         marker: {
-          color: "#fff"
+          color: [
+            "#6772e5",
+            "#e39f48",
+            "#24b47e",
+            "#3297d3",
+            "#b76ac4",
+            "#24b47e"
+          ]
         }
       }
     ];
@@ -225,7 +242,14 @@ export default {
         y: [20, 14, 23, 12, 15, 16],
         type: "bar",
         marker: {
-          color: "#fff"
+          color: [
+            "#6772e5",
+            "#e39f48",
+            "#24b47e",
+            "#3297d3",
+            "#b76ac4",
+            "#24b47e"
+          ]
         }
       }
     ];
@@ -242,20 +266,26 @@ export default {
         pad: 4
       },
       font: {
-        family: "Arial",
         size: 14,
-        color: "rgba(245,246,249,1)"
+        color: "#fff",
+        family: "Roboto"
       },
-
+      legend: {
+        font: {
+          size: 14,
+          color: "#000",
+          family: "Roboto"
+        }
+      },
       xaxis: {
-        color: "#fff"
+        color: "#000"
       },
       yaxis: {
-        color: "#fff",
-        gridcolor: "#ffffff33"
+        color: "#000",
+        gridcolor: "#00000011"
       },
       aaxis: {
-        color: "#fff"
+        color: "#000"
       },
       hovermode: "closest",
       hoverlabel: {
@@ -338,8 +368,8 @@ export default {
   padding: 15px;
   border-radius: 5px;
   width: 100%;
-  background: #f3c5c5;
-  color: #b51313;
+  background: #ff657a;
+  color: #fff;
   box-shadow: 1px 14px 34px -5px rgba(0, 0, 0, 0.3);
 }
 .content-panel-inner {
@@ -368,17 +398,27 @@ export default {
   padding: 0px 15px;
   overflow: visible;
 }
+.good {
+  color: #56ffbf !important;
+}
+
+.poor {
+  color: #ff657a !important;
+}
+.average {
+  color: #e39f48;
+}
 .health-value.good {
-  background: #3080e8;
-  border-color: #3080e8;
-  color: #fff;
+  background: #24b47e;
+  border-color: #24b47e;
+  color: #fff !important;
   border-top-right-radius: 3px;
   border-bottom-right-radius: 3px;
 }
 .health-value.average {
-  background: #405e85;
-  border-color: #405e85;
-  color: #fff;
+  background: #e39f48;
+  border-color: #e39f48;
+  color: #fff !important;
   border-top-right-radius: 3px;
   border-bottom-right-radius: 3px;
 }
@@ -386,10 +426,10 @@ export default {
   margin-right: 10px;
 }
 .health-value.poor {
-  background: #f3c5c5;
-  border-color: #f3c5c5;
+  background: #ff657a;
+  border-color: #ff657a;
   margin-top: 0px;
-  color: #b51313;
+  color: #fff !important;
   border-top-right-radius: 3px;
   border-bottom-right-radius: 3px;
 }
@@ -402,7 +442,7 @@ export default {
   font-size: 10pt;
   margin-right: -1px;
   color: #000;
-  border: solid 1px #3080e8;
+  border: solid 1px #3d7cc8;
   height: calc(100% + 2px);
 }
 .metric-container {
@@ -416,12 +456,15 @@ export default {
   padding: 15px;
 }
 .metric-title {
+  display: flex;
+  align-items: center;
+  height: 30px;
   font-size: 12pt;
   font-weight: 300;
 }
 .metric-value {
-  font-size: 25pt;
-  color: #000;
+  font-size: 16pt;
+  font-weight: bold;
   margin-top: 15px;
 }
 .top-dropdown {
@@ -433,15 +476,15 @@ export default {
   color: #fff;
 }
 .content-panel.bluepink {
-  background: linear-gradient(135deg, #3080e8 1%, #ff597d 100%);
+  background: linear-gradient(135deg, #3d7cc8 1%, #ff597d 100%);
+  color: #fff;
+}
+.content-panel-top.blue {
+  background: #3d7cc8;
   color: #fff;
 }
 .content-panel.blue {
-  background: linear-gradient(135deg, #3080e8 1%, #7db9e8 100%);
-  color: #fff;
-}
-.content-panel.green {
-  background: linear-gradient(135deg, #1cceae 0%, #7db9e8 100%);
+  background: linear-gradient(135deg, #3d7cc8 1%, #2e71b8 100%);
   color: #fff;
 }
 .content-panel:last-of-type {
@@ -478,7 +521,7 @@ export default {
 .content-panel {
   box-shadow: var(--shadow);
   background: #fff;
-  border-radius: 5px;
+  /* border-radius: 5px; */
   min-height: 100px;
   margin-bottom: 10px;
   overflow: hidden;
@@ -498,17 +541,21 @@ export default {
   color: #aab7c4;
   padding: 5px 0px;
 }
+.sidebar-option.sub {
+  margin-left: 45px;
+  font-size: 10pt;
+}
 .sidebar-option.active {
   color: #2b2d50;
 }
 .sidebar-option.active img {
-  filter: saturate(1);
+  filter: saturate(0.5) hue-rotate(2deg) contrast(1.3);
 }
 .sidebar-option:hover {
   color: #2b2d50;
 }
 .sidebar-option:hover img {
-  filter: saturate(1);
+  filter: saturate(0.5) hue-rotate(2deg) contrast(1.3);
 }
 .sidebar-option img {
   margin-right: 10px;

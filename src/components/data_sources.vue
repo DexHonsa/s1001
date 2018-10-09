@@ -3,45 +3,59 @@
         <Header />
         <FinancialPopup :hide="toggleFinancialPopup" v-if="financialPopup"/>
         <div class="main-container container">
-            <Sidebar activePage="financial" activeSubPage="income_expense" />
-
+            <Sidebar activePage="data_sources" activeSubPage="iot" />
             <div class="content-panels animated-med fadeInUp">
-              <div class="content-panel-top" style="padding-right:0;">
-                     
-                      <div class="content-panel-top-options">
-                        <div @click="toggleFinancialPopup" class="modal-btn confirm">Download/Import</div>
-                      </div>
+              <div class="content-panel">
+                <div class="gauges">
+                  <div class="gauge-chart">
+                    <div class="gauge-chart-title">Temperature</div>
+                    <div id="gauge-chart-1"></div>
                   </div>
-                <div class="content-panel">
-                  <div class="content-panel-top">
-                      <span>Basic Metrics</span>
-                      <div class="content-panel-top-options"><i class="fa fa-angle-down"></i></div>
+                  <div class="gauge-chart">
+                    <div class="gauge-chart-title">RH</div>
+                    <div id="gauge-chart-2"></div>
                   </div>
-                            <div class="chart-container">
-                                <div class="chart">
-                                    <div id="bar-chart-1"></div>
-                                </div>
-                            </div>
+                  <div class="gauge-chart">
+                    <div class="gauge-chart-title">CO2</div>
+                    <div id="gauge-chart-3"></div>
+                  </div>
+                  <div class="gauge-chart">
+                    <div class="gauge-chart-title">CO</div>
+                    <div id="gauge-chart-4"></div>
+                  </div>
+                  <div class="gauge-chart">
+                    <div class="gauge-chart-title">PM 2.5</div>
+                    <div id="gauge-chart-5"></div>
+                  </div>
+                  <div class="gauge-chart">
+                    <div class="gauge-chart-title">PM 10</div>
+                    <div id="gauge-chart-6"></div>
+                  </div>
                 </div>
+              </div>
+              <div class="content-panel-top" style="padding-right:0;">
+                  <div class="content-panel-top-options">
+                    <div @click="toggleFinancialPopup" class="download-link"><i class="fa fa-exclamation-triangle" style="margin-right:10px;"></i>As of September 05 2018</div>
+                  </div>
+              </div>
                 <div class="content-panel">
                   <div class="content-panel-top">
                       <span>Work Orders</span>
                       <div class="content-panel-top-options"><i class="fa fa-angle-down"></i></div>
                   </div>
-                            <div class="content-panel-inner">
-                              <div class="chart-container">
-                                <div class="chart">
-                                    <div id="bar-chart-2"></div>
-                                </div>
-                                <div class="chart">
-                                    <div id="bar-chart-3"></div>
-                                </div>
-                                <div class="chart">
-                                    <div id="bar-chart-4"></div>
-                                </div>
-                              </div>
-                            </div>
-                            
+                  <div class="content-panel-inner">
+                    <div class="chart-container">
+                      <div class="chart">
+                          <div id="bar-chart-2"></div>
+                      </div>
+                      <div class="chart">
+                          <div id="bar-chart-3"></div>
+                      </div>
+                      <div class="chart">
+                          <div id="bar-chart-4"></div>
+                      </div>
+                    </div>
+                  </div>
                 </div>
                 <div class="content-panel">
                     <div class="content-panel-top blue" style="border-bottom:none;">
@@ -295,6 +309,151 @@ export default {
         name: "Preventative"
       }
     ];
+    var gaugeLevel1 = 50;
+    var gaugeLevel2 = 50;
+    var gaugeLevel3 = 50;
+    var gaugeLevel4 = 50;
+    var gaugeLevel5 = 50;
+    var gaugeLevel6 = 50;
+    // Trig to calc meter point
+    var degrees = 180 - gaugeLevel1,
+      radius = 0.5;
+    var radians = (degrees * Math.PI) / 180;
+    var x = radius * Math.cos(radians);
+    var y = radius * Math.sin(radians);
+
+    // Path: may have to change to create a better triangle
+    var mainPath = "M -.0 -0.045 L .0 0.025 L ",
+      pathX = String(x),
+      space = " ",
+      pathY = String(y),
+      pathEnd = " Z";
+    var path = mainPath.concat(pathX, space, pathY, pathEnd);
+    var gaugeData1 = [
+      {
+        type: "scatter",
+        x: [0],
+        y: [0],
+        marker: { size: 13, color: "#000" },
+        showlegend: false,
+        name: "speed",
+        text: gaugeLevel1,
+        hoverinfo: ""
+      },
+      {
+        values: [50 / 6, 50 / 6, 50 / 6, 50 / 6, 50 / 6, 50 / 6, 50],
+        rotation: 90,
+        textinfo: "none",
+        marker: {
+          colors: [
+            "#1dd17d",
+            "rgb(125, 224, 141)",
+            "rgb(226, 236, 72)",
+            "rgb(247, 167, 68)",
+            "rgb(247, 117, 5)",
+            "rgb(191, 21, 21)",
+            "rgba(255, 255, 255, 0)"
+          ]
+        },
+        labels: ["151-180", "121-150", "91-120", "61-90", "31-60", "0-30", ""],
+        hoverinfo: "label",
+        hole: 0.5,
+        type: "pie",
+        showlegend: false
+      }
+    ];
+    var gaugeData2 = [
+      {
+        type: "scatter",
+        x: [0],
+        y: [0],
+        marker: { size: 13, color: "#000" },
+        showlegend: false,
+        text: gaugeLevel1,
+        hoverinfo: ""
+      },
+      {
+        values: [50 / 6, 50 / 6, 50 / 6, 50 / 6, 50 / 6, 50 / 6, 50],
+        rotation: 90,
+        textinfo: "none",
+        textposition: "outside",
+        marker: {
+          colors: [
+            "#1dd17d",
+            "rgb(125, 224, 141)",
+            "rgb(226, 236, 72)",
+            "rgb(247, 167, 68)",
+            "rgb(247, 117, 5)",
+            "rgb(191, 21, 21)",
+            "rgba(255, 255, 255, 0)"
+          ]
+        },
+        labels: [
+          "0 - 16%",
+          "17 - 33%",
+          "34 - 50%",
+          "51 - 67%",
+          "68 - 84%",
+          "85",
+          "100"
+        ],
+        hoverinfo: "label",
+        hole: 0.5,
+        type: "pie",
+        showlegend: false
+      }
+    ];
+
+    var gaugeLayout = {
+      shapes: [
+        {
+          type: "path",
+          path: path,
+          fillcolor: "000",
+          line: {
+            color: "000"
+          }
+        }
+      ],
+
+      Speed: 0 - 100,
+      height: 200,
+      width: 150,
+      annotations: [
+        {
+          xref: "paper",
+          yref: "paper",
+          x: 0.55,
+          xanchor: "right",
+          y: 0.97,
+          yanchor: "bottom",
+
+          font: {
+            family: "Roboto"
+          },
+          showarrow: false
+        }
+      ],
+      margin: {
+        l: 15,
+        r: 15,
+        b: 15,
+        t: 15,
+        pad: 2
+      },
+      xaxis: {
+        zeroline: false,
+        showticklabels: false,
+        showgrid: false,
+        range: [-1, 1]
+      },
+      yaxis: {
+        zeroline: false,
+        showticklabels: false,
+        showgrid: false,
+        range: [-1, 1]
+      }
+    };
 
     var layoutBlue = {
       showlegend: false,
@@ -396,31 +555,63 @@ export default {
     layoutGreen.xaxis.domain = [0, 1];
     layoutGreen.showlegend = true;
 
-    var workChart1 = JSON.parse(JSON.stringify(layoutGreen));
-    var workChart2 = JSON.parse(JSON.stringify(layoutGreen));
-    var workChart3 = JSON.parse(JSON.stringify(layoutGreen));
+    var gaugeLayout1 = JSON.parse(JSON.stringify(gaugeLayout));
+    var gaugeLayout2 = JSON.parse(JSON.stringify(gaugeLayout));
+    var gaugeLayout3 = JSON.parse(JSON.stringify(gaugeLayout));
+    var gaugeLayout4 = JSON.parse(JSON.stringify(gaugeLayout));
+    var gaugeLayout5 = JSON.parse(JSON.stringify(gaugeLayout));
+    var gaugeLayout6 = JSON.parse(JSON.stringify(gaugeLayout));
 
-    workChart1.title = "Work Order Vs NOI & Asset Value";
-    workChart2.title = "Work Order Vs Cost";
-    workChart3.title = "Work Order Cost Vs NOI & Asset Value";
+    gaugeLayout1.annotations[0].text = gaugeLevel1;
+    gaugeLayout2.annotations[0].text = gaugeLevel2;
+    gaugeLayout3.annotations[0].text = gaugeLevel3;
+    gaugeLayout4.annotations[0].text = gaugeLevel4;
+    gaugeLayout5.annotations[0].text = gaugeLevel5;
+    gaugeLayout6.annotations[0].text = gaugeLevel6;
 
-    Plotly.newPlot("bar-chart-1", data, layoutBlue, {
+    // ---------------- BUILD GAUGE CHARTS ---------------------
+    Plotly.newPlot("gauge-chart-1", gaugeData1, gaugeLayout1, {
+      responsive: true,
+      displayModeBar: false
+    });
+    Plotly.newPlot("gauge-chart-2", gaugeData1, gaugeLayout2, {
+      responsive: true,
+      displayModeBar: false
+    });
+    Plotly.newPlot("gauge-chart-3", gaugeData1, gaugeLayout3, {
+      responsive: true,
+      displayModeBar: false
+    });
+    Plotly.newPlot("gauge-chart-4", gaugeData1, gaugeLayout4, {
+      responsive: true,
+      displayModeBar: false
+    });
+    Plotly.newPlot("gauge-chart-5", gaugeData1, gaugeLayout5, {
+      responsive: true,
+      displayModeBar: false
+    });
+    Plotly.newPlot("gauge-chart-6", gaugeData1, gaugeLayout6, {
       responsive: true,
       displayModeBar: false
     });
 
-    Plotly.newPlot("bar-chart-2", data2, workChart1, {
-      responsive: true,
-      displayModeBar: false
-    });
-    Plotly.newPlot("bar-chart-3", data2, workChart2, {
-      responsive: true,
-      displayModeBar: false
-    });
-    Plotly.newPlot("bar-chart-4", data2, workChart3, {
-      responsive: true,
-      displayModeBar: false
-    });
+    // Plotly.newPlot("bar-chart-1", data, layoutBlue, {
+    //   responsive: true,
+    //   displayModeBar: false
+    // });
+
+    // Plotly.newPlot("bar-chart-2", data2, workChart1, {
+    //   responsive: true,
+    //   displayModeBar: false
+    // });
+    // Plotly.newPlot("bar-chart-3", data2, workChart2, {
+    //   responsive: true,
+    //   displayModeBar: false
+    // });
+    // Plotly.newPlot("bar-chart-4", data2, workChart3, {
+    //   responsive: true,
+    //   displayModeBar: false
+    // });
   },
   computed: {},
   methods: {
@@ -442,5 +633,39 @@ export default {
 .split {
   background: #f7fafc !important;
   font-weight: bold;
+}
+.gauges {
+  display: flex;
+  height: 150px;
+}
+.gauge-chart-title {
+  text-align: center;
+}
+.gauge-chart {
+  max-width: 16.6666%;
+  flex: 1;
+  padding: 10px;
+}
+
+.g-green {
+  background: #1dd17d;
+}
+.g-green {
+  background: #46aa56;
+}
+.g-green {
+  background: #63aa42;
+}
+.g-green {
+  background: #9fd843;
+}
+.g-green {
+  background: #d8d643;
+}
+.g-green {
+  background: #d89243;
+}
+.g-green {
+  background: #d84343;
 }
 </style>

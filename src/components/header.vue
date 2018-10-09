@@ -20,12 +20,17 @@
                             </div>
                             <div @click="toggleProfileMenu" class="profile-option">
                                 <i class="fa fa-user-circle"></i>
-                                <div v-if="profileMenu" class="dropdown-panel animated-fast zoomIn2">
-                                  <div class="dropdown-title">Menu</div>
+                                <transition
+                                        enter-active-class="zoomIn2"
+                                        leave-active-class="fadeOutDown"
+                                      >
+                                <div v-if="profileMenu" class="dropdown-panel animated-fast">
+                                    <div class="dropdown-title">Menu</div>
                                     <div class="dropdown-option">Profile</div>
                                     <div class="dropdown-option">Settings</div>
                                     <div class="dropdown-option">Logout</div>
                                 </div>
+                                </transition>
                             </div>
                             
                         </div>
