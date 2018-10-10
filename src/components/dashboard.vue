@@ -6,26 +6,35 @@
                 <div class="main-container container">
                     <Sidebar activePage="dashboard" />
                     <div class="content-panels animated-med fadeInUp">
-                      <div class="content-panel blue">
+                      
                             
-                            <div class="content-panel-inner">
+                            <div class="content-panel-inner" style="margin:0px -20px">
                               <div class="metric-container">
-                                <div class="metric-item">
-                                  <div class="metric-title">NOI</div>
-                                  <div class="metric-value good">$565,344</div>
+                                <div class="metric-value-main good">
+                                  <div>
+                                    <div class="metric-title">NOI</div>
+                                    <div class="metric-value">$565,344</div>
+                                  </div>
+                                  <div class="metric-check">Good <i class="fa fa-check"></i></div>
                                 </div>
-                                <div class="metric-item">
-                                  <div class="metric-title">Asset Value</div>
-                                  <div class="metric-value">$1,565,344</div>
+                                <div class="metric-value-main average">
+                                  <div>
+                                    <div class="metric-title">Asset Value</div>
+                                    <div class="metric-value">$1,565,344</div>
+                                  </div>
+                                  <div class="metric-check">Needs Attention <i class="fa fa-exclamation-triangle"></i></div>
                                 </div>
-                                <div class="metric-item">
-                                  <div class="metric-title">Repair and Maintenance &nbsp; <i class="fa fa-exclamation-triangle average"></i></div>
-                                  <div class="metric-value poor">$565,344</div>
+                                <div class="metric-value-main poor">
+                                  <div>
+                                    <div class="metric-title">Repair and Maintenance &nbsp; <i style="color:#fbc37a" class="fa fa-exclamation-triangle"></i></div>
+                                    <div class="metric-value">$565,344</div>
+                                  </div>
+                                  <div class="metric-check">Urgent <i class="fa fa-exclamation-triangle"></i></div>
                                 </div>
                               </div>
                             </div>
                             
-                        </div>
+                        
                         <div class="content-panel">
                             <div class="content-panel-top">
                                 <div class="top-dropdown" >
@@ -64,53 +73,53 @@
                             </div>
                             <div class="content-panel-inner">
                               <div class="metric-container">
-                                <div class="health-item">
+                                <div class="health-item good">
                                   <div class="health-title">Air Quality</div>
-                                  <div class="health-value good">Good</div>
+                                  <div class="health-value "><i class="fa fa-check"></i> Good</div>
                                 </div>
-                                <div class="health-item">
+                                <div class="health-item good">
                                   <div class="health-title">Safety Security Level</div>
-                                  <div class="health-value good">Good</div>
+                                  <div class="health-value "><i class="fa fa-check"></i>Good</div>
                                 </div>
-                                <div class="health-item">
+                                <div class="health-item good">
                                   <div class="health-title">Thermal Level</div>
-                                  <div class="health-value good">Good</div>
+                                  <div class="health-value "><i class="fa fa-check"></i> Good</div>
                                 </div>
-                                <div class="health-item">
+                                <div class="health-item average">
                                   <div class="health-title">Water Quality</div>
-                                  <div class="health-value average">Average</div>
+                                  <div class="health-value "><i class="fa fa-exclamation-triangle"></i> Average</div>
                                 </div>
-                                <div @click="toggleHealth(5)" class="health-item" :class="{'active': activeHealth == 5}">
+                                <div @click="toggleHealth(5)" class="health-item poor" :class="{'active': activeHealth == 5}">
                                   <div v-if="activeHealth == 5" class="active-health-panel animated-fast fadeInUp">
                                     <i class="fa fa-exclamation-triangle"></i> &nbsp;Your Moisture Level is poor. <div style="margin-left:auto" class="basic-btn danger">Get Help</div>
                                   </div>
                                   <div class="health-title">Moisture Level</div>
-                                  <div class="health-value poor"><i class="fa fa-exclamation-triangle"></i> Poor</div>
+                                  <div class="health-value "><i class="fa fa-exclamation-triangle"></i> Poor</div>
                                   
                                 </div>
                                 
-                                <div class="health-item">
+                                <div class="health-item good">
                                   <div class="health-title">Noise Level</div>
-                                  <div class="health-value good">Good</div>
+                                  <div class="health-value "><i class="fa fa-check"></i> Good</div>
                                 </div>
-                                <div class="health-item">
+                                <div class="health-item good">
                                   <div class="health-title">Dust Level</div>
-                                  <div class="health-value good">Good</div>
+                                  <div class="health-value "><i class="fa fa-check"></i> Good</div>
                                 </div>
-                                <div class="health-item">
+                                <div class="health-item good">
                                   <div class="health-title">Lighting Quality</div>
-                                  <div class="health-value good">Good</div>
+                                  <div class="health-value "><i class="fa fa-check"></i> Good</div>
                                 </div>
-                                <div class="health-item">
+                                <div class="health-item good">
                                   <div class="health-title">Water Level</div>
-                                  <div class="health-value good">Good</div>
+                                  <div class="health-value "><i class="fa fa-check"></i> Good</div>
                                 </div>
-                                <div @click="toggleHealth(10)" class="health-item" :class="{'active': activeHealth == 10}">
+                                <div @click="toggleHealth(10)" class="health-item poor" :class="{'active': activeHealth == 10}">
                                   <div v-if="activeHealth == 10" class="active-health-panel animated-fast fadeInUp">
                                     <i class="fa fa-exclamation-triangle"></i>&nbsp; Your Ventilation Quality is poor. <div style="margin-left:auto" class="basic-btn danger">Get Help</div>
                                   </div>
                                   <div class="health-title">Ventilation Quality</div>
-                                  <div class="health-value poor"><i class="fa fa-exclamation-triangle"></i> Poor</div>
+                                  <div class="health-value "><i class="fa fa-exclamation-triangle"></i> Poor</div>
                                   
                                 </div>
                               </div>
@@ -408,27 +417,27 @@ export default {
 .average {
   color: #e39f48;
 }
-.health-value.good {
+.health-item.good {
   background: #24b47e;
   border-color: #24b47e;
   color: #fff !important;
   border-top-right-radius: 3px;
   border-bottom-right-radius: 3px;
 }
-.health-value.average {
+.health-item.average {
   background: #e39f48;
   border-color: #e39f48;
   color: #fff !important;
   border-top-right-radius: 3px;
   border-bottom-right-radius: 3px;
 }
-.health-value.poor i {
+.health-item i {
   margin-right: 10px;
 }
-.health-value.poor {
+.health-item.poor {
   background: #ff657a;
   border-color: #ff657a;
-  margin-top: 0px;
+
   color: #fff !important;
   border-top-right-radius: 3px;
   border-bottom-right-radius: 3px;
@@ -441,8 +450,8 @@ export default {
   width: 100px;
   font-size: 10pt;
   margin-right: -1px;
-  color: #000;
-  border: solid 1px #3d7cc8;
+  color: #fff;
+
   height: calc(100% + 2px);
 }
 .metric-container {
@@ -461,6 +470,36 @@ export default {
   height: 30px;
   font-size: 12pt;
   font-weight: 300;
+}
+.metric-check {
+  font-weight: 300;
+  font-size: 15pt;
+  margin-left: auto;
+}
+.metric-value-main {
+  display: flex;
+  align-items: center;
+  font-size: 16pt;
+  font-weight: 700;
+  margin-top: 15px;
+  padding: 15px;
+  border-radius: 3px;
+  flex: 1;
+  margin: 5px;
+  box-shadow: var(--shadow);
+  color: #fff;
+}
+.metric-value-main.good {
+  background: #25b47e;
+  color: #fff !important;
+}
+.metric-value-main.average {
+  background: #e39f49;
+  color: #fff !important;
+}
+.metric-value-main.poor {
+  background: #ff667a;
+  color: #fff !important;
 }
 .metric-value {
   font-size: 16pt;
