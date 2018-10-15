@@ -5,7 +5,13 @@
         <div class="main-container container">
             <Sidebar activePage="data_sources" activeSubPage="iot" />
             <div class="content-panels animated-med fadeInUp">
-              <div class="content-panel">
+              
+              <div class="content-panel-top" style="padding-right:0;">
+                  <div class="content-panel-top-options">
+                    <div @click="toggleFinancialPopup" class="download-link"><i class="fa fa-exclamation-triangle" style="margin-right:10px;"></i>As of September 05 2018</div>
+                  </div>
+              </div>
+              <div class="content-panel" style="overflow:visible">
                 <div class="gauges">
                   <div class="gauge-chart">
                     <div class="gauge-chart-title">Temperature</div>
@@ -32,11 +38,27 @@
                     <div id="gauge-chart-6"></div>
                   </div>
                 </div>
-              </div>
-              <div class="content-panel-top" style="padding-right:0;">
-                  <div class="content-panel-top-options">
-                    <div @click="toggleFinancialPopup" class="download-link"><i class="fa fa-exclamation-triangle" style="margin-right:10px;"></i>As of September 05 2018</div>
+                <div class="iot-date-picker">
+                  <div class="content-panel-inner">
+                    <div class="modal-sub-inner">
+                    <div class="input-row">
+                      <div style="display:flex; align-items:center;">
+                      From: <div class="standard-input-item" style="width: 250px">                              
+                                  <datepicker :value="toDate" @selected="selectedFrom" :disabled="disabled" :highlighted="highlighted" id="project_start_date" name="project_start_date" input-class="standard-input  date-input icon"></datepicker>
+                                <div class="standard-input-icon"><i class="fa fa-calendar" /></div>
+                            </div>
+                        </div>
+                        <div style="display:flex; align-items:center;">
+                      To: <div class="standard-input-item" style="width: 250px">                              
+                                  <datepicker :value="toDate" @selected="selectedTo" :disabled="disabled" :highlighted="highlighted"  id="project_start_date" name="project_start_date" input-class="standard-input  date-input icon"></datepicker>
+                                <div class="standard-input-icon"><i class="fa fa-calendar" /></div>
+                            </div>
+                        </div>
+                    </div>
+                    </div>
                   </div>
+
+                </div>
               </div>
                 <div class="content-panel">
                   <div class="content-panel-top">
@@ -194,7 +216,9 @@ export default {
   name: "financial",
   data() {
     return {
-      financialPopup: false
+      financialPopup: false,
+      fromDate: "",
+      toDate: new Date()
     };
   },
   components: {
@@ -613,13 +637,37 @@ export default {
     //   displayModeBar: false
     // });
   },
-  computed: {},
+  computed: {
+    highlighted() {
+      if(this.toDate == ''){
+        return {
+        from: this.fromDate,
+        to: this.fromDate
+      };
+      }
+      return {
+        from: this.fromDate,
+        to: this.toDate
+      };
+    },
+    disabled(){
+      return  {
+      from: new Date()
+    }
+    }
+  },
   methods: {
+    selectedFrom(date) {
+      this.fromDate = date;
+    },
+    selectedTo(date) {
+      this.toDate = date;
+    },
     toggleFinancialPopup() {
       this.financialPopup = !this.financialPopup;
     }
   }
-};
+}
 </script>
 <style>
 .datepicker-title {
@@ -644,6 +692,7 @@ export default {
 .gauge-chart {
   max-width: 16.6666%;
   flex: 1;
+  overflow: hidden;
   padding: 10px;
 }
 
