@@ -310,7 +310,7 @@ export default {
   }
 };
 </script>
-<style scoped>
+<style>
 .project-view-table tr:first-child {
   height: 45px;
   /* background: #aebac7; */

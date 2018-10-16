@@ -49,7 +49,7 @@ export default new Router({
       component: Reporting
     },
     {
-      path: '/admin_settings/users',
+      path: '/admin_settings',
       name: 'admin users',
       component: AdminUsers
     },

@@ -4,10 +4,8 @@
             
                 <Header />
                 <div class="main-container container">
-                    <Sidebar activePage="dashboard" />
+                    <Sidebar activePage="dashboard"  />
                     <div class="content-panels animated-med fadeInUp">
-                      
-                            
                             <div class="content-panel-inner" style="margin:0px -20px">
                               <div class="metric-container">
                                 <div class="metric-value-main good">

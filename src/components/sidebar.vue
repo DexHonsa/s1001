@@ -13,7 +13,8 @@
         <div @click="$router.push('/data_sources/third_party')" v-if="activePage == 'data_sources'" class="sidebar-option sub" :class="{'active':activeSubPage == 'third_party'}" >Third Party</div>
 
         <div @click="$router.push('/admin_settings')" class="sidebar-option" :class="{'active':activePage == 'admin_settings'}"><img src="../img/icon_4.svg" alt=""> Admin Settings</div>
-        <div @click="$router.push('/data_sources')" v-if="activePage == 'data_sources'" class="sidebar-option sub" :class="{'active':activeSubPage == 'iot'}" >IOT</div>
+        <div @click="$router.push('/admin_settings')" v-if="activePage == 'admin_settings'" class="sidebar-option sub" :class="{'active':activeSubPage == 'users'}" >Users</div>
+        <div @click="$router.push('/admin_settings/assets')" v-if="activePage == 'admin_settings'" class="sidebar-option sub" :class="{'active':activeSubPage == 'assets'}" >Assets</div>
         <div @click="$router.push('/reporting')" class="sidebar-option" :class="{'active':activePage == 'reporting'}"><img src="../img/icon_5.svg" alt=""> Reporting</div>
     </div>
 </template>
