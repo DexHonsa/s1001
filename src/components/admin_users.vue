@@ -1,5 +1,6 @@
 <template>
     <div>
+        <CreateUser :hide="toggleCreateUser" v-if="createUser" />
         <Header />
        
         <div class="main-container container">
@@ -10,7 +11,7 @@
                     <div class="content-panel-top blue" style="border-bottom:none;">
                        
                         <div class="content-panel-top-options">
-                              <span><div @click="toggleLeasingPopup" class="modal-btn cancel">New User</div></span>
+                              <span><div @click="toggleCreateUser" class="modal-btn cancel">New User</div></span>
                         </div>
                     </div>
                     <div>
@@ -64,49 +65,57 @@
                 </div>
             </div>
         </div>
-    </div>
+    
 </template>
 <script>
+import CreateUser from "./admin_create_user";
 import Header from "./header";
 import Sidebar from "./sidebar";
 
 export default {
   name: "financial",
   data() {
-    return {};
+    return {
+      createUser: false
+    };
   },
   components: {
     Header,
-    Sidebar
+    Sidebar,
+    CreateUser
   },
   mounted() {},
   computed: {},
-  methods: {}
+  methods: {
+    toggleCreateUser() {
+      this.createUser = !this.createUser;
+    }
+  }
 };
 </script>
 <style scoped>
-.project-view-table tr{
-  cursor:default;
+.project-view-table tr {
+  cursor: default;
 }
-.project-view-table tr td:first-of-type{
+.project-view-table tr td:first-of-type {
   max-width: 30px;
-  color:#94a7b9;
+  color: #94a7b9;
 }
-.project-view-table tr td:last-of-type{
+.project-view-table tr td:last-of-type {
   max-width: 150px;
-  color:#94a7b9;
+  color: #94a7b9;
   text-align: right;
 }
-.project-view-table tr:hover i{
+.project-view-table tr:hover i {
   opacity: 1 !important;
 }
-.project-view-table tr td:last-of-type i{
+.project-view-table tr td:last-of-type i {
   opacity: 0;
   cursor: pointer;
-  margin-left:10px;
+  margin-left: 10px;
   font-size: 15pt;
 }
-.project-view-table tr td:last-of-type i:hover{
-  color:#000;
+.project-view-table tr td:last-of-type i:hover {
+  color: #000;
 }
 </style>

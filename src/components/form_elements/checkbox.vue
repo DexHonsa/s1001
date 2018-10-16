@@ -18,9 +18,7 @@ export default {
   name: "checkbox",
   props: ["name", "title", "value", "checked"],
   data() {
-    return {
-      checked: false
-    };
+    return {};
   },
   methods: {
     check() {

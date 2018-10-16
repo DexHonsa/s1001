@@ -8,6 +8,7 @@ import DataSources from '@/components/data_sources';
 import DataSourcesThirdParty from '@/components/data_sources_third_party';
 import Reporting from '@/components/reporting';
 import AdminUsers from '@/components/admin_users';
+import AdminAssets from '@/components/admin_assets';
 
 Vue.use(Router)
 
@@ -56,7 +57,7 @@ export default new Router({
     {
       path: '/admin_settings/assets',
       name: 'admin assets',
-      component: AdminUsers
+      component: AdminAssets
     },
     {
       path: '/admin_settings/clients',
