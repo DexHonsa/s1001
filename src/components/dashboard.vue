@@ -373,11 +373,10 @@ export default {
   top: calc(-200% - 15px);
   display: flex;
   align-items: center;
-
   padding: 15px;
   border-radius: 5px;
   width: 100%;
-  background: #ff657a;
+  background: #d33131;
   color: #fff;
   box-shadow: 1px 14px 34px -5px rgba(0, 0, 0, 0.3);
 }
@@ -435,9 +434,9 @@ export default {
   margin-right: 10px;
 }
 .health-item.poor {
-  background: #ff657a;
-  border-color: #ff657a;
-
+  background: #d63131;
+  border-color: #d63131;
+  box-shadow: 0px 0px 0px 3px #d6323263;
   color: #fff !important;
   border-top-right-radius: 3px;
   border-bottom-right-radius: 3px;
@@ -498,8 +497,9 @@ export default {
   color: #fff !important;
 }
 .metric-value-main.poor {
-  background: #ff667a;
+  background: #d63131;
   color: #fff !important;
+  box-shadow: 0px 0px 0px 5px #d6323263;
 }
 .metric-value {
   font-size: 16pt;
@@ -511,11 +511,11 @@ export default {
   cursor: pointer;
 }
 .content-panel.pink {
-  background: linear-gradient(135deg, #f7ca78 1%, #ff597d 100%);
+  background: linear-gradient(135deg, #f7ca78 1%, #d63131 100%);
   color: #fff;
 }
 .content-panel.bluepink {
-  background: linear-gradient(135deg, #3d7cc8 1%, #ff597d 100%);
+  background: linear-gradient(135deg, #3d7cc8 1%, #d63131 100%);
   color: #fff;
 }
 .content-panel-top.blue {

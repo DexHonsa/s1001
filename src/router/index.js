@@ -5,6 +5,9 @@ import Financial from '@/components/financial'
 import FinancialAssetValuation from '@/components/financial_asset_valuation';
 import Leasing from '@/components/leasing';
 import DataSources from '@/components/data_sources';
+import DataSourcesThirdParty from '@/components/data_sources_third_party';
+import Reporting from '@/components/reporting';
+import AdminUsers from '@/components/admin_users';
 
 Vue.use(Router)
 
@@ -34,6 +37,41 @@ export default new Router({
       path: '/data_sources',
       name: 'data sources',
       component: DataSources
+    },
+    {
+      path: '/data_sources/third_party',
+      name: 'data sources',
+      component: DataSourcesThirdParty
+    },
+    {
+      path: '/reporting',
+      name: 'reporting',
+      component: Reporting
+    },
+    {
+      path: '/admin_settings/users',
+      name: 'admin users',
+      component: AdminUsers
+    },
+    {
+      path: '/admin_settings/assets',
+      name: 'admin assets',
+      component: AdminUsers
+    },
+    {
+      path: '/admin_settings/clients',
+      name: 'admin clients',
+      component: AdminUsers
+    },
+    {
+      path: '/admin_settings/iot',
+      name: 'admin iot',
+      component: AdminUsers
+    },
+    {
+      path: '/admin_settings/valuation',
+      name: 'admin valuation',
+      component: AdminUsers
     }
     
   ]

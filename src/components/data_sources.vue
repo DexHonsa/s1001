@@ -43,16 +43,32 @@
                     <div class="modal-sub-inner">
                     <div class="input-row">
                       <div style="display:flex; align-items:center;">
-                      From: <div class="standard-input-item" style="width: 250px">                              
+                      From:&nbsp; <div class="standard-input-item" style="width: 250px">                              
                                   <datepicker :value="toDate" @selected="selectedFrom" :disabled="disabled" :highlighted="highlighted" id="project_start_date" name="project_start_date" input-class="standard-input  date-input icon"></datepicker>
                                 <div class="standard-input-icon"><i class="fa fa-calendar" /></div>
                             </div>
                         </div>
-                        <div style="display:flex; align-items:center;">
-                      To: <div class="standard-input-item" style="width: 250px">                              
+                        <div style="display:flex; align-items:center;margin-left:15px;">
+                      To:&nbsp; <div class="standard-input-item" style="width: 250px;">                              
                                   <datepicker :value="toDate" @selected="selectedTo" :disabled="disabled" :highlighted="highlighted"  id="project_start_date" name="project_start_date" input-class="standard-input  date-input icon"></datepicker>
                                 <div class="standard-input-icon"><i class="fa fa-calendar" /></div>
                             </div>
+                        </div>
+                        <div style="display:flex; align-items:center; margin-left:15px;">
+                          From:&nbsp; 
+                          <StandardSelect
+                            width="100px"
+                            :value="{label:'12am',value:'12am'}"
+                            :options="[{label:'12am',value:'12am'}]"
+                           />
+                        </div>
+                        <div style="display:flex; align-items:center;margin-left:15px;">
+                          To:&nbsp; 
+                          <StandardSelect
+                            width="100px"
+                            :value="{label:'12am',value:'12am'}"
+                            :options="[{label:'12am',value:'12am'}]"
+                           />
                         </div>
                     </div>
                     </div>
@@ -60,148 +76,49 @@
 
                 </div>
               </div>
-                <div class="content-panel">
+               
+                 <div class="content-panel">
                   <div class="content-panel-top">
-                      <span>Work Orders</span>
+                      
                       <div class="content-panel-top-options"><i class="fa fa-angle-down"></i></div>
                   </div>
-                  <div class="content-panel-inner">
-                    <div class="chart-container">
-                      <div class="chart">
-                          <div id="bar-chart-2"></div>
-                      </div>
-                      <div class="chart">
-                          <div id="bar-chart-3"></div>
-                      </div>
-                      <div class="chart">
-                          <div id="bar-chart-4"></div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-                <div class="content-panel">
-                    <div class="content-panel-top blue" style="border-bottom:none;">
-                        <span>Oct 10, 2018</span>
-                        <div class="content-panel-top-options">
-                            <div class="standard-input-item" style="max-width: 250px; color:#000">
-                                <div class="datepicker-title">Compare Date: </div>
-                                    
-                                        <datepicker id="project_start_date" name="project_start_date" input-class="standard-input  date-input icon"></datepicker>
-                                    <div class="standard-input-icon"><i class="fa fa-calendar" /></div>
+                            <div class="content-panel-inner">
+                              <div class="chart-container">
+                                <div class="chart">
+                                    <div id="bar-chart-1"></div>
                                 </div>
-                        </div>
-                    </div>
-                    <div>
-                        <div v-if="!isLoading" class="table-container">
-                            <table class="project-view-table">
-                                <tbody>
-                                <tr>
-                                    
-                                    <th>Items <i class="fa fa-caret-up"></i></th>
-                                    <th>Actual $</th>
-                                    <th>Budget</th>
-                                    <th>Variance</th>
-                                    <th>Variance %</th>
-                                    
-                                </tr>
-                                <tr>
-                                    
-                                    <td>Revenue</td>
-                                    <td>506,234 <span>506,123</span></td>
-                                    <td>430,434 <span>506,123</span></td>
-                                    <td>430,434 <span>506,123</span></td>
-                                    <td><i class="fa fa-angle-up"></i>&nbsp; 70% <span>50%</span></td>
-                                </tr>
-                                <tr>
-                                    <td>Other Revenue</td>
-                                    <td>506,234 <span>506,123</span></td>
-                                    <td>430,434 <span>406,123</span></td>
-                                    <td>430,434 <span>236,123</span></td>
-                                    <td><i class="fa fa-angle-up"></i>&nbsp; 70% <span>50%</span></td>
-                                </tr>
-                                <tr>
-                                    <td>Rental Income</td>
-                                    <td>506,234 <span>506,123</span></td>
-                                    <td>430,434 <span>406,123</span></td>
-                                    <td>430,434 <span>236,123</span></td>
-                                    <td><i class="fa fa-angle-up"></i>&nbsp; 70% <span>50%</span></td>
-                                </tr>
-                                <tr>
-                                    <td>Operating Expenses</td>
-                                    <td>506,234 <span>506,123</span></td>
-                                    <td>430,434 <span>406,123</span></td>
-                                    <td>430,434 <span>236,123</span></td>
-                                    <td><i class="fa fa-angle-up"></i>&nbsp; 70% <span>50%</span></td>
-                                </tr>
-                                <tr>
-                                    <td>Taxes And Insurance</td>
-                                    <td>506,234 <span>506,123</span></td>
-                                    <td>430,434 <span>406,123</span></td>
-                                    <td>430,434 <span>236,123</span></td>
-                                    <td><i class="fa fa-angle-up"></i>&nbsp; 70% <span>50%</span></td>
-                                </tr>
-                                <tr>
-                                    <td>Maintenance And Repairs</td>
-                                    <td>506,234 <span>506,123</span></td>
-                                    <td>430,434 <span>406,123</span></td>
-                                    <td>430,434 <span>236,123</span></td>
-                                    <td><i class="fa fa-angle-up"></i>&nbsp; 70% <span>50%</span></td>
-                                </tr>
-                                <tr class="split">
-                                    <td>Net Operating Income</td>
-                                    <td>506,234 <span>506,123</span></td>
-                                    <td>430,434 <span>406,123</span></td>
-                                    <td>430,434 <span>236,123</span></td>
-                                    <td><i class="fa fa-angle-up"></i>&nbsp; 70% <span>50%</span></td>
-                                </tr>
-                                <tr>
-                                    <td>Non Operating Items</td>
-                                    <td>506,234 <span>506,123</span></td>
-                                    <td>430,434 <span>406,123</span></td>
-                                    <td>430,434 <span>236,123</span></td>
-                                    <td><i class="fa fa-angle-up"></i>&nbsp; 70% <span>50%</span></td>
-                                </tr>
-                                <tr>
-                                    <td>Interest/Land Lease</td>
-                                    <td>506,234 <span>506,123</span></td>
-                                    <td>430,434 <span>406,123</span></td>
-                                    <td>430,434 <span>236,123</span></td>
-                                    <td><i class="fa fa-angle-up"></i>&nbsp; 70% <span>50%</span></td>
-                                </tr>
-                                <tr>
-                                    <td>First Mortgage Interest</td>
-                                    <td>506,234 <span>506,123</span></td>
-                                    <td>430,434 <span>406,123</span></td>
-                                    <td>430,434 <span>236,123</span></td>
-                                    <td><i class="fa fa-angle-up"></i>&nbsp; 70% <span>50%</span></td>
-                                </tr>
-                                <tr>
-                                    <td>Capital Expenditures</td>
-                                    <td>506,234 <span>506,123</span></td>
-                                    <td>430,434 <span>406,123</span></td>
-                                    <td>430,434 <span>236,123</span></td>
-                                    <td><i class="fa fa-angle-up"></i>&nbsp; 70% <span>50%</span></td>
-                                </tr>
-                                <tr>
-                                    <td>Building Improvements</td>
-                                    <td>506,234 <span>506,123</span></td>
-                                    <td>430,434 <span>406,123</span></td>
-                                    <td>430,434 <span>236,123</span></td>
-                                    <td><i class="fa fa-angle-up"></i>&nbsp; 70% <span>50%</span></td>
-                                </tr>
-                                <tr class="split">
-                                    <td>Financial Performance</td>
-                                    <td>506,234 <span>506,123</span></td>
-                                    <td>430,434 <span>406,123</span></td>
-                                    <td>430,434 <span>236,123</span></td>
-                                    <td><i class="fa fa-angle-up"></i>&nbsp; 70% <span>50%</span></td>
-                                </tr>
-                                </tbody>
-                            </table>
-                            
+                                <div class="chart">
+                                    <div id="bar-chart-2"></div>
+                                </div>
+                                
+                              </div>
+                              <div class="chart-container">
+                                <div class="chart">
+                                    <div id="bar-chart-3"></div>
+                                </div>
+                                <div class="chart">
+                                    <div id="bar-chart-4"></div>
+                                </div>
+                                
+                              </div>
+                               <div class="chart-container">
+                                <div class="chart">
+                                    <div id="bar-chart-5"></div>
+                                </div>
+                                <div class="chart">
+                                    <div id="bar-chart-6"></div>
+                                </div>
+                                
+                              </div>
+                               <div class="chart-container">
+                                <div class="chart">
+                                    <div id="bar-chart-7"></div>
+                                </div>
+                                
+                                
+                              </div>
                             </div>
-                    </div>
-                    </div>
+                            
                 </div>
             </div>
         </div>
@@ -210,6 +127,7 @@
 <script>
 import Header from "./header";
 import Sidebar from "./sidebar";
+import StandardSelect from "./form_elements/custom_select";
 import Datepicker from "vuejs-datepicker";
 import FinancialPopup from "./financial_popup";
 export default {
@@ -225,59 +143,25 @@ export default {
     Header,
     Sidebar,
     Datepicker,
-    FinancialPopup
+    FinancialPopup,
+    StandardSelect
   },
   mounted() {
-    var data = [
-      {
-        x: ["Budget", "Last Year", "Actual"],
-        y: [2000000, 1800000, 1600000],
-        type: "bar",
-        marker: {
-          color: ["#2e71b890", "#2e71b890", "#2e71b8"]
-        },
-        width: [0.6, 0.6, 0.8],
-        name: "NOI"
-      },
-      {
-        x: ["Budget", "Last Year", "Actual"],
-        y: [2000000, 1800000, 1600000],
-        type: "bar",
-        marker: {
-          color: ["#2e71b890", "#2e71b890", "#2e71b8"]
-        },
-        width: [0.6, 0.6, 0.8],
-        xaxis: "x2",
-        name: "Revenue"
-      },
-      {
-        x: ["Budget", "Last Year", "Actual"],
-        y: [194000, 502000, 402000],
-        type: "bar",
-        marker: {
-          color: ["#2e71b890", "#2e71b890", "#2e71b8"]
-        },
-        width: [0.6, 0.6, 0.8],
-        xaxis: "x3",
-        name: "Utilities"
-      }
-    ];
-
     var data2 = [
       {
         x: [
-          "Jan",
-          "Feb",
-          "Mar",
-          "Apr",
-          "May",
-          "Jun",
-          "Jul",
-          "Aug",
-          "Sep",
-          "Oct",
-          "Nov",
-          "Dec"
+          "23-09-18 00:00",
+          "23-09-18 01:00",
+          "23-09-18 02:00",
+          "23-09-18 03:00",
+          "23-09-18 04:00",
+          "23-09-18 05:00",
+          "23-09-18 06:00",
+          "23-09-18 07:00",
+          "23-09-18 08:00",
+          "23-09-18 09:00",
+          "23-09-18 10:00",
+          "23-09-18 11:00"
         ],
         y: [
           3400,
@@ -298,39 +182,79 @@ export default {
           color: "#2e71b8"
         },
 
-        name: "Asset Value"
+        name: "Level"
       },
       {
         x: [
-          "Jan",
-          "Feb",
-          "Mar",
-          "Apr",
-          "May",
-          "Jun",
-          "Jul",
-          "Aug",
-          "Sep",
-          "Oct",
-          "Nov",
-          "Dec"
+          "23-09-18 00:00",
+          "23-09-18 01:00",
+          "23-09-18 02:00",
+          "23-09-18 03:00",
+          "23-09-18 04:00",
+          "23-09-18 05:00",
+          "23-09-18 06:00",
+          "23-09-18 07:00",
+          "23-09-18 08:00",
+          "23-09-18 09:00",
+          "23-09-18 10:00",
+          "23-09-18 11:00"
         ],
-        y: [0, 500, 1200, 1300, 1200, 1700, 2300, 2500, 3000, 4332, 4600, 5000],
+        y: [
+          1200,
+          1200,
+          1200,
+          1200,
+          1200,
+          1200,
+          1200,
+          1200,
+          1200,
+          1200,
+          1200,
+          1200
+        ],
         type: "scatter",
         marker: {
-          color: "#e39f48"
+          color: "#00ff00"
         },
-        name: "Reactive"
+        mode: "lines",
+        name: "Excellent"
       },
       {
-        x: ["Apr", "May", "Jun", "Aug"],
-        y: [3400, 4500, 2500, 4300],
-        type: "bar",
+        x: [
+          "23-09-18 00:00",
+          "23-09-18 01:00",
+          "23-09-18 02:00",
+          "23-09-18 03:00",
+          "23-09-18 04:00",
+          "23-09-18 05:00",
+          "23-09-18 06:00",
+          "23-09-18 07:00",
+          "23-09-18 08:00",
+          "23-09-18 09:00",
+          "23-09-18 10:00",
+          "23-09-18 11:00"
+        ],
+        y: [
+          2200,
+          2200,
+          2200,
+          2200,
+          2200,
+          2200,
+          2200,
+          2200,
+          2200,
+          2200,
+          2200,
+          2200
+        ],
+        type: "scatter",
         marker: {
-          color: "#3080e8"
+          color: "#ff0000"
         },
-
-        name: "Preventative"
+        mode: "lines",
+        name: "Bad"
       }
     ];
     var gaugeLevel1 = 50;
@@ -619,41 +543,71 @@ export default {
       displayModeBar: false
     });
 
-    // Plotly.newPlot("bar-chart-1", data, layoutBlue, {
-    //   responsive: true,
-    //   displayModeBar: false
-    // });
+    // ------------ BAR CHARRTS --------------------
+    var chart1 = JSON.parse(JSON.stringify(layoutGreen));
+    var chart2 = JSON.parse(JSON.stringify(layoutGreen));
+    var chart3 = JSON.parse(JSON.stringify(layoutGreen));
+    var chart4 = JSON.parse(JSON.stringify(layoutGreen));
+    var chart5 = JSON.parse(JSON.stringify(layoutGreen));
+    var chart6 = JSON.parse(JSON.stringify(layoutGreen));
+    var chart7 = JSON.parse(JSON.stringify(layoutGreen));
 
-    // Plotly.newPlot("bar-chart-2", data2, workChart1, {
-    //   responsive: true,
-    //   displayModeBar: false
-    // });
-    // Plotly.newPlot("bar-chart-3", data2, workChart2, {
-    //   responsive: true,
-    //   displayModeBar: false
-    // });
-    // Plotly.newPlot("bar-chart-4", data2, workChart3, {
-    //   responsive: true,
-    //   displayModeBar: false
-    // });
+    chart1.title = "AQI Level";
+    chart2.title = "Temperture Level";
+    chart3.title = "Humidity Level";
+    chart4.title = "CO2 Level";
+    chart5.title = "CO Level";
+    chart6.title = "PM25 Level";
+    chart7.title = "PM10 Level";
+
+    Plotly.newPlot("bar-chart-1", data2, chart1, {
+      responsive: true,
+      displayModeBar: false
+    });
+
+    Plotly.newPlot("bar-chart-2", data2, chart2, {
+      responsive: true,
+      displayModeBar: false
+    });
+    Plotly.newPlot("bar-chart-3", data2, chart3, {
+      responsive: true,
+      displayModeBar: false
+    });
+    Plotly.newPlot("bar-chart-4", data2, chart4, {
+      responsive: true,
+      displayModeBar: false
+    });
+
+    Plotly.newPlot("bar-chart-5", data2, chart5, {
+      responsive: true,
+      displayModeBar: false
+    });
+    Plotly.newPlot("bar-chart-6", data2, chart6, {
+      responsive: true,
+      displayModeBar: false
+    });
+    Plotly.newPlot("bar-chart-7", data2, chart7, {
+      responsive: true,
+      displayModeBar: false
+    });
   },
   computed: {
     highlighted() {
-      if(this.toDate == ''){
+      if (this.toDate == "") {
         return {
-        from: this.fromDate,
-        to: this.fromDate
-      };
+          from: this.fromDate,
+          to: this.fromDate
+        };
       }
       return {
         from: this.fromDate,
         to: this.toDate
       };
     },
-    disabled(){
-      return  {
-      from: new Date()
-    }
+    disabled() {
+      return {
+        from: new Date()
+      };
     }
   },
   methods: {
@@ -667,7 +621,7 @@ export default {
       this.financialPopup = !this.financialPopup;
     }
   }
-}
+};
 </script>
 <style>
 .datepicker-title {
