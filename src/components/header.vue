@@ -1,5 +1,6 @@
 <template>
     <div class="top-bar">
+        <LoginForm :hide="showLogin" v-if="login"/>
                     <div class="container top-bar-inner">
                         <div class="logo"><img src="../img/logo_1.png" alt=""></div>
                         <div class="left-options">
@@ -29,6 +30,7 @@
                                     <div class="dropdown-option">Profile</div>
                                     <div class="dropdown-option">Settings</div>
                                     <div class="dropdown-option">Logout</div>
+                                    <div @click="showLogin" class="dropdown-option">Login</div>
                                 </div>
                                 </transition>
                             </div>
@@ -41,21 +43,27 @@
 <script>
 import StandardInputIcon from "./form_elements/standard_input_icon";
 import Datepicker from "vuejs-datepicker";
+import LoginForm from "./login_form";
 export default {
   name: "head",
   data() {
     return {
-      profileMenu: false
+      profileMenu: false,
+      login: false
     };
   },
   methods: {
     toggleProfileMenu() {
       this.profileMenu = !this.profileMenu;
+    },
+    showLogin() {
+      this.login = !this.login;
     }
   },
   components: {
     StandardInputIcon,
-    Datepicker
+    Datepicker,
+    LoginForm
   }
 };
 </script>
