@@ -1,8 +1,11 @@
 <template lang="html">
   <div class="overlay animated-fast " :class="{'fadeIn':visible,'fadeOut':!visible}" >
+    <IOTScore :hide="toggleIOTScore" v-if="IOTScore" />
+    <ValuationEdit :hide="toggleValuationEdit" v-if="valuationEdit" />
     <div class="modal-1 animated-fast " :class="{'zoomIn':visible,'zoomOut':!visible}" style="max-width: 700px">
       <div class="modal-top">
         <div class="modal-title">Add Property</div>
+        
       </div>
       <form  @submit.prevent="submitForm">
         <div class="modal-inner">
@@ -89,10 +92,13 @@
                
             </div>
             </div>
+            <div class="input-row">
+              <button @click="toggleValuationEdit" class="modal-btn confirm">Valuation Edit</button>
+              <button @click="toggleIOTScore" class="modal-btn confirm">IOT Score</button>
+            </div>
             <div class="modal-btn-container">
                 <div @click="toggleVisible" class="modal-btn cancel">Cancel</div>
-                <div @click="toggleVisible" class="modal-btn confirm">Next</div>
-            
+                <div @click="toggleVisible" class="modal-btn confirm">Add Property</div>
             </div>
             <div v-if="hasError" class="alert-danger animated fadeIn animate-fix" style="color:#ff0000; text-align:center; clear:both">{{errorMessage}}</div>
         </div>
@@ -104,6 +110,8 @@
 import StandardInput from "./form_elements/standard_input";
 import StandardSelect from "./form_elements/custom_select";
 import Checkbox from "./form_elements/checkbox";
+import ValuationEdit from "./admin_valuation_edit";
+import IOTScore from "./admin_IOT_score";
 
 export default {
   name: "login_form",
@@ -111,20 +119,30 @@ export default {
   components: {
     StandardInput,
     StandardSelect,
-    Checkbox
+    Checkbox,
+    ValuationEdit,
+    IOTScore
   },
   data() {
     return {
       visible: true,
       hasError: false,
       isLoading: false,
-      errorMessage: ""
+      errorMessage: "",
+      valuationEdit: false,
+      IOTScore: false
     };
   },
   $_veeValidate: {
     validator: "new" // give me a new validator each time.
   },
   methods: {
+    toggleValuationEdit() {
+      this.valuationEdit = !this.valuationEdit;
+    },
+    toggleIOTScore() {
+      this.IOTScore = !this.IOTScore;
+    },
     toggleVisible() {
       var that = this;
       this.visible = false;
